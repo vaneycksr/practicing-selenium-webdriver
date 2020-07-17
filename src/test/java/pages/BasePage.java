@@ -11,8 +11,9 @@ public class BasePage {
         this.driver = driver;
     }
 
-    public String capturarMensagemDeErroNoLogin(){
-         return driver.findElement(By.cssSelector("div[class$=danger")).getText();
+    public String capturarMensagemDeErro(){
+
+        return driver.findElement(By.xpath("//*[@id='login_button_container']/div/form/h3")).getText();
     }
 
 }

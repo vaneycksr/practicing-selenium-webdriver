@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
 
-    private static final String MENSAGEM_DE_ERRO_LOGIN = "Problemas com o login do usuário";
+    private static final String USER_BLOQUEADO = "Epic sadface: Sorry, this user has been locked out.";
     private WebDriver driver;
 
     @Before
@@ -20,36 +20,23 @@ public class LoginTest {
     }
 
     @Test
-    public void testRealizarLoginComEmailCorretoESenhaErrada(){
+    public void testRealizarLoginComUsuarioBloqueado(){
+        String blocked = new LoginPage(driver)
+                .realizarLogin("locked_out_user","secret_sauce")
+                .capturarMensagemDeErro()
+        ;
 
-        String erroNoLogin = new LoginPage(driver)
-                .realizarLogin("van_eyck1@hotmail.com","123455")
-                .capturarMensagemDeErroNoLogin();
-        assertEquals(MENSAGEM_DE_ERRO_LOGIN,erroNoLogin);
-    }
-
-    @Test
-    public void testRealizarLoginComEmailErradoESenhaCorreta(){
-
-        String erroNoLogin = new LoginPage(driver)
-                .realizarLogin("vaneyck23@hotmail.com","123456")
-                .capturarMensagemDeErroNoLogin();
-        assertEquals(MENSAGEM_DE_ERRO_LOGIN,erroNoLogin);
-    }
-
-    @Test
-    public void testRealizarLoginComCamposVazios(){
-
+        assertEquals(USER_BLOQUEADO,blocked);
     }
 
     @Test
     public void testRealizarLoginComSucesso(){
 
-        String mensagem = new LoginPage(driver)
-                .realizarLogin("van_eyck1@hotmail.com","123456")
-                .mensagemBemVindo();
+        String labelProducts = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .labelProducts();
 
-        assertEquals("Bem vindo, van!", mensagem);
+        assertEquals("Products", labelProducts);
     }
 
     @After

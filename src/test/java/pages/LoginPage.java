@@ -9,34 +9,37 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage digitarEmail(String email){
+    public LoginPage digitarUsername(String email){
 
-        driver.findElement(By.id("email")).sendKeys(email);
+        driver.findElement(By.id("user-name")).sendKeys(email);
 
         return this;
     }
 
-    public LoginPage digitarSenha(String password){
+    public LoginPage digitarPassword(String password){
 
-        driver.findElement(By.id("senha")).sendKeys(password);
+        driver.findElement(By.id("password")).sendKeys(password);
+
         return this;
     }
 
-    public HomePage clicarBotaoEntrar(){
+    public InventoryPage clicarBotaoLogin(){
 
-        driver.findElement(By.xpath("//form/button")).click();
+        driver.findElement(By.cssSelector("input[id='login-button']")).click();
 
-        return new HomePage(driver);
+        return new InventoryPage(driver);
     }
 
-    public HomePage realizarLogin(String email, String password){
+    public InventoryPage realizarLogin(String user, String password){
 
-        digitarEmail(email);
-        digitarSenha(password);
-        clicarBotaoEntrar();
+        digitarUsername(user);
+        digitarPassword(password);
+        clicarBotaoLogin();
 
-        return new HomePage(driver);
+        return new InventoryPage(driver);
     }
+
+
 
 
 }

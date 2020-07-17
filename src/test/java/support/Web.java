@@ -16,7 +16,7 @@ public class Web {
         // definir tempo padrão de espera
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.get("https://srbarriga.herokuapp.com/login");
+        driver.get("https://www.saucedemo.com/");
 
         return driver;
 
