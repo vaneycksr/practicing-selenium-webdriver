@@ -37,7 +37,7 @@ public class LoginTest {
     public void testRealizarLoginComUsuarioComProblema(){
         boolean imageProblemUser = new LoginPage(driver)
                 .realizarLogin("problem_user","secret_sauce")
-                .imgWithError();
+                .imagemComErro();
 
         assertEquals(false,imageProblemUser);
 
@@ -48,7 +48,7 @@ public class LoginTest {
 
         String labelProducts = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .labelProducts();
+                .tituloDaPaginaDeProdutos();
 
         assertEquals("Products", labelProducts);
     }

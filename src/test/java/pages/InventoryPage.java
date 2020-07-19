@@ -10,12 +10,12 @@ public class InventoryPage extends BasePage{
         super(driver);
     }
 
-    public String labelProducts(){
+    public String tituloDaPaginaDeProdutos(){
         return driver.findElement(By.xpath("//*[@id=\"inventory_filter_container\"]/div")).getText();
     }
 
     // verifica se uma imagem está na página
-    public boolean imgWithError(){
+    public boolean imagemComErro(){
 
         WebElement ImageFile = driver.findElement(By.xpath("//*[@id=\"item_2_img_link\"]/img"));
 
@@ -30,6 +30,26 @@ public class InventoryPage extends BasePage{
         * */
         return (Boolean) ((JavascriptExecutor)driver)
                 .executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+    }
+
+    public SpecificProductPage clicarProdutoEspecifico(String product){
+
+        driver.findElement(By.xpath("//div[contains(text(),'"+product+"')]")).click();
+
+        return new SpecificProductPage(driver);
+
+    }
+
+    public InventoryPage adicionarProdutoNoCarrinhoDeCompras(){
+
+        // tô no label do produto
+        //driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]")).findElement(By.xpath("/div[3]/button")).click();
+
+
+        // FUNCIONA MAS ESTÁ HORRÍVEL
+        driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
+
+        return this;
     }
 
 
