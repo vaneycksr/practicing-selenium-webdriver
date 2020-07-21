@@ -45,9 +45,9 @@ public class InventoryPage extends BasePage{
         // tô no label do produto
         //driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]")).findElement(By.xpath("/div[3]/button")).click();
 
-
         // FUNCIONA MAS ESTÁ HORRÍVEL
         driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
+        //driver.findElement(By.xpath(".//*[text()='ADD TO CART'][3]")).click();
 
         return this;
     }

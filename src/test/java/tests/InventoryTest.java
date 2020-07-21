@@ -33,10 +33,11 @@ public class InventoryTest {
     @Test
     public void testAdicionarProdutoNoCarrinhoDeCompras(){
 
-        new LoginPage(driver)
+        String qtdProdutosCarrinho = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras();
-
+                .adicionarProdutoNoCarrinhoDeCompras()
+                .quantidadeDeProdutosNoCarrinho();
+        assertEquals("1",qtdProdutosCarrinho);
     }
 
 
