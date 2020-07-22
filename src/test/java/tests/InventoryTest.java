@@ -1,12 +1,15 @@
 package tests;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class InventoryTest {
 
@@ -40,6 +43,21 @@ public class InventoryTest {
         assertEquals("1",qtdProdutosCarrinho);
     }
 
+    @Test
+    public void testRemoveProdutoDoCarrinhoDeCompra(){
+
+        boolean carrinho = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .removerProdutoDocarrinhoDeCompras()
+                .carrinhoVazio();
+        //assertEquals(false,carrinho);
+        assertFalse(carrinho);
+    }
+
+    @Ignore
+    public void tearDown(){
+        driver.quit();
+    }
 
 
 }

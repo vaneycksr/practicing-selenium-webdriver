@@ -42,15 +42,24 @@ public class InventoryPage extends BasePage{
 
     public InventoryPage adicionarProdutoNoCarrinhoDeCompras(){
 
-        // tô no label do produto
-        //driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]")).findElement(By.xpath("/div[3]/button")).click();
-
-        // FUNCIONA MAS ESTÁ HORRÍVEL
+        // FUNCIONA, MAS DEVE SER MELHORADO
         driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
         //driver.findElement(By.xpath(".//*[text()='ADD TO CART'][3]")).click();
 
+        // possivel melhoria
+        //WebElement label = driver.findElement(By.xpath(".//div[@class='inventory_item']/div[@class='inventory_item_label']/a/div[contains(text(),'Sauce Labs Onesie')]"));
+
         return this;
     }
+
+    public InventoryPage removerProdutoDocarrinhoDeCompras(){
+
+        adicionarProdutoNoCarrinhoDeCompras();
+        driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
+
+        return this;
+    }
+
 
 
 }

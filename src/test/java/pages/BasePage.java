@@ -20,4 +20,8 @@ public class BasePage {
         return driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span")).getText();
     }
 
+    public boolean carrinhoVazio(){
+        return driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span")).isDisplayed();
+    }
+
 }
