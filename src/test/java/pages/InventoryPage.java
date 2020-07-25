@@ -40,6 +40,10 @@ public class InventoryPage extends BasePage{
 
     }
 
+    public String retornarTextoDoBotaoAdicionarRemoverDoCarrinho(){
+        return driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).getText();
+    }
+
     public InventoryPage adicionarProdutoNoCarrinhoDeCompras(){
 
         // FUNCIONA, MAS DEVE SER MELHORADO

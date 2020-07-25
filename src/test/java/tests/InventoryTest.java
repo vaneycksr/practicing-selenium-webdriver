@@ -46,15 +46,15 @@ public class InventoryTest {
     @Test
     public void testRemoveProdutoDoCarrinhoDeCompra(){
 
-        boolean carrinho = new LoginPage(driver)
+        String textoDoBotao = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .removerProdutoDocarrinhoDeCompras()
-                .carrinhoVazio();
-        //assertEquals(false,carrinho);
-        assertFalse(carrinho);
+                .retornarTextoDoBotaoAdicionarRemoverDoCarrinho();
+
+        assertEquals("ADD TO CART",textoDoBotao);
     }
 
-    @Ignore
+    @After
     public void tearDown(){
         driver.quit();
     }

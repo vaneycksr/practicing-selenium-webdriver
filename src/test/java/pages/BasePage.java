@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class BasePage {
 
     protected WebDriver driver;
@@ -21,7 +23,8 @@ public class BasePage {
     }
 
     public boolean carrinhoVazio(){
-        return driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span")).isDisplayed();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        return driver.findElement(By.cssSelector("span[class='fa-layers-counter shopping_cart_badge']")).isDisplayed();
     }
 
 }
