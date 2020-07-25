@@ -54,7 +54,16 @@ public class InventoryTest {
         assertEquals("ADD TO CART",textoDoBotao);
     }
 
-    @After
+    // TODO: 24/07/2020 falta clicar em logout e fazer a validacao 
+    @Test
+    public void testRealizarLogout(){
+
+        new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarNoMenu();
+    }
+
+    @Ignore
     public void tearDown(){
         driver.quit();
     }

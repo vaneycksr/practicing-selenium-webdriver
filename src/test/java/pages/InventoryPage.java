@@ -64,6 +64,13 @@ public class InventoryPage extends BasePage{
         return this;
     }
 
+    public InventoryPage clicarNoMenu(){
+
+        driver.findElement(By.className("bm-burger-button")).click();
+
+        return this;
+    }
+
 
 
 }
