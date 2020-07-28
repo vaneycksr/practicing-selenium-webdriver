@@ -9,6 +9,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    public boolean botaoLoginVisivel(){
+        return driver.findElement(By.id("login-button")).isDisplayed();
+    }
+
     public LoginPage digitarUsername(String email){
 
         driver.findElement(By.id("user-name")).sendKeys(email);

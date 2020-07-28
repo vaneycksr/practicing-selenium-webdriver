@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class InventoryPage extends BasePage{
     public InventoryPage(WebDriver driver) {
@@ -69,6 +70,32 @@ public class InventoryPage extends BasePage{
         driver.findElement(By.className("bm-burger-button")).click();
 
         return this;
+    }
+
+    public LoginPage clicarEmLogout(){
+
+        clicarNoMenu();
+        driver.findElement(By.linkText("Logout")).click();
+
+        return new LoginPage(driver);
+    }
+
+    public InventoryPage clicarEmOrdenarProdutosZtoA(){
+
+        WebElement campoType = driver.findElement(By.className("product_sort_container")); // capturei o combobox
+        new Select(campoType).selectByVisibleText("Name (Z to A)");
+
+        return this;
+    }
+
+    public String getUltimoProdutoOrdenadoZtoA(){
+
+        return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[last()]")).getText();
+    }
+
+    public String getUltimoPrimeiroOrdenadoZtoA(){
+
+        return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[1]")).getText();
     }
 
 

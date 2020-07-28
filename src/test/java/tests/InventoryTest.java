@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class InventoryTest {
 
@@ -54,13 +53,32 @@ public class InventoryTest {
         assertEquals("ADD TO CART",textoDoBotao);
     }
 
-    // TODO: 24/07/2020 falta clicar em logout e fazer a validacao 
     @Test
     public void testRealizarLogout(){
 
-        new LoginPage(driver)
+        boolean botaoVisivel = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .clicarNoMenu();
+                .clicarEmLogout()
+                .botaoLoginVisivel();
+        assertTrue(botaoVisivel);
+    }
+
+    @Test
+    public void testValidarOrdenacaoDosProdutosZtoAUltimoProduto(){
+        String ultimoProduto = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarEmOrdenarProdutosZtoA()
+                .getUltimoProdutoOrdenadoZtoA();
+        assertEquals("Sauce Labs Backpack",ultimoProduto);
+    }
+
+    @Test
+    public void testValidarOrdenacaoDosProdutosZtoAPrimeiroProduto(){
+        String primeiroProduto = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarEmOrdenarProdutosZtoA()
+                .getUltimoPrimeiroOrdenadoZtoA();
+        assertEquals("Test.allTheThings() T-Shirt (Red)",primeiroProduto);
     }
 
     @Ignore
