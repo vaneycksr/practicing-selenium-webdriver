@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -67,8 +66,8 @@ public class InventoryTest {
     public void testValidarOrdenacaoDosProdutosZtoAUltimoProduto(){
         String ultimoProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .clicarEmOrdenarProdutosZtoA()
-                .getUltimoProdutoOrdenadoZtoA();
+                .clicarEmOrdenarProdutos("Name (Z to A)")
+                .getUltimoProdutoPeloTitulo();
         assertEquals("Sauce Labs Backpack",ultimoProduto);
     }
 
@@ -76,15 +75,46 @@ public class InventoryTest {
     public void testValidarOrdenacaoDosProdutosZtoAPrimeiroProduto(){
         String primeiroProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .clicarEmOrdenarProdutosZtoA()
-                .getUltimoPrimeiroOrdenadoZtoA();
+                .clicarEmOrdenarProdutos("Name (Z to A)")
+                .getPrimeiroProdutoPeloTitulo();
         assertEquals("Test.allTheThings() T-Shirt (Red)",primeiroProduto);
     }
 
-    @Ignore
+    @Test
+    public void testValidarOrdenacaoPorMenorPreco(){
+
+        String menorPreco = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarEmOrdenarProdutos("Price (low to high)")
+                .getPrimeiroPrecoDoProduto();
+
+        assertEquals("$7.99",menorPreco);
+    }
+
+    @Test
+    public void testValidarOrdenacaoPorMaiorPreco(){
+        String maiorPreco = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarEmOrdenarProdutos("Price (high to low)")
+                .getPrimeiroPrecoDoProduto();
+
+        assertEquals("$49.99", maiorPreco);
+    }
+
+    @Test
+    public void testValidarOrdenacaoPorOrdemAlfabetica(){
+
+        String primeiroProduto = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .getPrimeiroProdutoPeloTitulo();
+
+        assertEquals("Sauce Labs Backpack",primeiroProduto);
+    }
+
+
+    @After
     public void tearDown(){
         driver.quit();
     }
-
 
 }

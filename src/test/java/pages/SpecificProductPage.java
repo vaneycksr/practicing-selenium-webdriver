@@ -14,5 +14,12 @@ public class SpecificProductPage extends BasePage{
 
     }
 
+    public InventoryPage clicarBotaoVoltar(){
+
+        driver.findElement(By.xpath("//button[@class='inventory_details_back_button']")).click();
+
+        return new InventoryPage(driver);
+    }
+
 
 }

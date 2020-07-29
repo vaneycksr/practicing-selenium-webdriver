@@ -80,24 +80,27 @@ public class InventoryPage extends BasePage{
         return new LoginPage(driver);
     }
 
-    public InventoryPage clicarEmOrdenarProdutosZtoA(){
+    public InventoryPage clicarEmOrdenarProdutos(String orderType){
 
-        WebElement campoType = driver.findElement(By.className("product_sort_container")); // capturei o combobox
-        new Select(campoType).selectByVisibleText("Name (Z to A)");
+        WebElement campoType = driver.findElement(By.className("product_sort_container"));
+        new Select(campoType).selectByVisibleText(orderType);
 
         return this;
     }
 
-    public String getUltimoProdutoOrdenadoZtoA(){
+    public String getUltimoProdutoPeloTitulo(){
 
         return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[last()]")).getText();
     }
 
-    public String getUltimoPrimeiroOrdenadoZtoA(){
+    public String getPrimeiroProdutoPeloTitulo(){
 
         return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[1]")).getText();
     }
 
+    public String getPrimeiroPrecoDoProduto(){
+        return driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[1]")).getText();
+    }
 
 
 }
