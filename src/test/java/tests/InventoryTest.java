@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -111,6 +112,15 @@ public class InventoryTest {
         assertEquals("Sauce Labs Backpack",primeiroProduto);
     }
 
+    @Test
+    public void testValidarClicarNoCarrinhoDeCompras(){
+        String tituloDaPaginaDoCarrinhoDeCompras = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarNoCarrinhoDeCompras()
+                .retornaTituloDaPaginaDoCarrinhoDeCompras();
+
+        assertEquals("Your Cart",tituloDaPaginaDoCarrinhoDeCompras);
+    }
 
     @After
     public void tearDown(){

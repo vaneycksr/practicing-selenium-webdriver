@@ -21,5 +21,23 @@ public class SpecificProductPage extends BasePage{
         return new InventoryPage(driver);
     }
 
+    public SpecificProductPage clicarNoCarrinhoDeCompras(){
+
+        driver.findElement(By.xpath("//button[@class='btn_primary btn_inventory']")).click();
+
+        return this;
+    }
+
+    public SpecificProductPage clicarEmRemoverDoCarrinhoDeCompras(){
+
+        driver.findElement(By.xpath("//button[@class='btn_secondary btn_inventory']")).click();
+
+        return this;
+    }
+
+    public String getTextoDoBotaoAdicionarRemoverDoCarrinho(){
+
+        return driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div/button")).getText();
+    }
 
 }

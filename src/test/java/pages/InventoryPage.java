@@ -72,6 +72,13 @@ public class InventoryPage extends BasePage{
         return this;
     }
 
+    public CartPage clicarNoCarrinhoDeCompras(){
+
+        driver.findElement(By.xpath("//a[@href='./cart.html']")).click();
+
+        return new CartPage(driver);
+    }
+
     public LoginPage clicarEmLogout(){
 
         clicarNoMenu();
