@@ -21,7 +21,6 @@ public class InventoryPage extends BasePage{
         WebElement ImageFile = driver.findElement(By.xpath("//*[@id=\"item_2_img_link\"]/img"));
 
         /*
-        *
         * The next line executes some javascript and returns the result to ImagePresent.
         *
         * The Javascript checks if image (arguments[0]) has completed loading AND its naturalWidth is not "undefined" AND its naturalWidth is greater than zero.
@@ -45,6 +44,7 @@ public class InventoryPage extends BasePage{
         return driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).getText();
     }
 
+    // TODO: 30/07/2020 deve ser melhorado. Ideal seria passar o nome do produto como parametro no findElement
     public InventoryPage adicionarProdutoNoCarrinhoDeCompras(){
 
         // FUNCIONA, MAS DEVE SER MELHORADO
@@ -75,6 +75,14 @@ public class InventoryPage extends BasePage{
     public CartPage clicarNoCarrinhoDeCompras(){
 
         driver.findElement(By.xpath("//a[@href='./cart.html']")).click();
+
+        return new CartPage(driver);
+    }
+
+    public CartPage adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(){
+
+        adicionarProdutoNoCarrinhoDeCompras();
+        clicarNoCarrinhoDeCompras();
 
         return new CartPage(driver);
     }
