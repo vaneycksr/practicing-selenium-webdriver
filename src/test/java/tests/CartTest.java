@@ -8,12 +8,13 @@ import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CartTest {
 
     private WebDriver driver;
     private static final String BACKPACK_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button";
+    private static final String BIKE_LIGHT_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[2]/div[3]/button";
 
     @Before
     public void setUp(){
@@ -43,13 +44,17 @@ public class CartTest {
         assertEquals("Sauce Labs Backpack", produtoAdicionado);
     }
 
-    // TODO: 04/08/2020 Incompleto
-    @Ignore
+    @Test
     public void testRemoverProdutoDoCarrinho(){
 
-        new LoginPage(driver)
+        boolean produtoEstaVisivel = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE);
+                .adicionarProdutoNoCarrinhoDeCompras(BIKE_LIGHT_ADD_REMOVE)
+                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .removerProduto("Sauce Labs Backpack")
+                .botaoDoProdutoEstaVisivel("Sauce Labs Bike Light");
+
+        assertTrue(produtoEstaVisivel);
     }
 
     @Test
