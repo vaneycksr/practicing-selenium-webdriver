@@ -44,12 +44,10 @@ public class InventoryPage extends BasePage{
         return driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).getText();
     }
 
-    // TODO: 30/07/2020 deve ser melhorado. Ideal seria passar o nome do produto como parametro no findElement
-    public InventoryPage adicionarProdutoNoCarrinhoDeCompras(){
 
-        // FUNCIONA, MAS DEVE SER MELHORADO
-        driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
-        //driver.findElement(By.xpath(".//*[text()='ADD TO CART'][3]")).click();
+    public InventoryPage adicionarProdutoNoCarrinhoDeCompras(String xpathDoProduto){
+
+        driver.findElement(By.xpath(xpathDoProduto)).click();
 
         // possivel melhoria
         //WebElement label = driver.findElement(By.xpath(".//div[@class='inventory_item']/div[@class='inventory_item_label']/a/div[contains(text(),'Sauce Labs Onesie')]"));
@@ -57,10 +55,11 @@ public class InventoryPage extends BasePage{
         return this;
     }
 
-    public InventoryPage removerProdutoDocarrinhoDeCompras(){
+    public InventoryPage removerProdutoDocarrinhoDeCompras(String xpathDoProduto){
 
-        adicionarProdutoNoCarrinhoDeCompras();
-        driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
+        adicionarProdutoNoCarrinhoDeCompras(xpathDoProduto);
+
+        driver.findElement(By.xpath(xpathDoProduto)).click();
 
         return this;
     }
@@ -79,9 +78,9 @@ public class InventoryPage extends BasePage{
         return new CartPage(driver);
     }
 
-    public CartPage adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(){
+    public CartPage adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(String xpathDoProduto){
 
-        adicionarProdutoNoCarrinhoDeCompras();
+        adicionarProdutoNoCarrinhoDeCompras(xpathDoProduto);
         clicarNoCarrinhoDeCompras();
 
         return new CartPage(driver);

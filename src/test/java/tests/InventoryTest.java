@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 public class InventoryTest {
 
     private WebDriver driver;
+    private static final String BACKPACK_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button";
 
     @Before
     public void setUp(){
@@ -37,7 +38,7 @@ public class InventoryTest {
 
         String qtdProdutosCarrinho = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras()
+                .adicionarProdutoNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
                 .quantidadeDeProdutosNoCarrinho();
         assertEquals("1",qtdProdutosCarrinho);
     }
@@ -47,7 +48,7 @@ public class InventoryTest {
 
         String textoDoBotao = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .removerProdutoDocarrinhoDeCompras()
+                .removerProdutoDocarrinhoDeCompras(BACKPACK_ADD_REMOVE)
                 .retornarTextoDoBotaoAdicionarRemoverDoCarrinho();
 
         assertEquals("ADD TO CART",textoDoBotao);
