@@ -25,4 +25,20 @@ public class CartPage extends BasePage{
 
     }
 
+    // TODO: 04/08/2020 metodo de adicionar um produto precisa ser melhorado para realizar a remocao de forma dinamica
+    public CartPage removerProduto(){
+
+        driver.findElement(By.xpath("")).click();
+
+        return this;
+    }
+
+    public CheckoutPage clicarBotaoCheckout(){
+
+        driver.findElement(By.linkText("CHECKOUT")).click();
+
+        return new CheckoutPage(driver);
+    }
+
+
 }

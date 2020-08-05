@@ -42,6 +42,28 @@ public class CartTest {
         assertEquals("Sauce Labs Backpack", produtoAdicionado);
     }
 
+    // TODO: 04/08/2020 Incompleto
+    @Ignore
+    public void testRemoverProdutoDoCarrinho(){
+
+        new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .adicionarProdutoNoCarrinhoDeCompras();
+    }
+
+    @Test
+    public void testValidarClicarBotaoCheckout(){
+
+        String tituloPaginaCheckout = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .clicarNoCarrinhoDeCompras()
+                .clicarBotaoCheckout()
+                .retornaTituloDaPaginaCheckout();
+
+        assertEquals("Checkout: Your Information",tituloPaginaCheckout);
+
+    }
+
     @After
     public void tearDown(){
         driver.quit();
