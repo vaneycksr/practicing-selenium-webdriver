@@ -41,25 +41,22 @@ public class InventoryPage extends BasePage{
     }
 
     public String retornarTextoDoBotaoAdicionarRemoverDoCarrinho(){
+
         return driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).getText();
     }
 
-
     public InventoryPage adicionarProdutoNoCarrinhoDeCompras(String xpathDoProduto){
 
-        driver.findElement(By.xpath(xpathDoProduto)).click();
-
-        // possivel melhoria
-        //WebElement label = driver.findElement(By.xpath(".//div[@class='inventory_item']/div[@class='inventory_item_label']/a/div[contains(text(),'Sauce Labs Onesie')]"));
+        driver.findElement(By.xpath("//div[contains(text(),'"+xpathDoProduto+"')]/../../../div[3]/button")).click();
 
         return this;
     }
 
-    public InventoryPage removerProdutoDocarrinhoDeCompras(String xpathDoProduto){
+    public InventoryPage removerProdutoDoCarrinhoDeCompras(String xpathDoProduto){
 
         adicionarProdutoNoCarrinhoDeCompras(xpathDoProduto);
 
-        driver.findElement(By.xpath(xpathDoProduto)).click();
+        driver.findElement(By.xpath("//div[contains(text(),'"+xpathDoProduto+"')]/../../../div[3]/button")).click();
 
         return this;
     }

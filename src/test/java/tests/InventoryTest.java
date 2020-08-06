@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -13,7 +12,6 @@ import static org.junit.Assert.*;
 public class InventoryTest {
 
     private WebDriver driver;
-    private static final String BACKPACK_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button";
 
     @Before
     public void setUp(){
@@ -38,7 +36,7 @@ public class InventoryTest {
 
         String qtdProdutosCarrinho = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .adicionarProdutoNoCarrinhoDeCompras("Sauce Labs Backpack")
                 .quantidadeDeProdutosNoCarrinho();
         assertEquals("1",qtdProdutosCarrinho);
     }
@@ -48,7 +46,7 @@ public class InventoryTest {
 
         String textoDoBotao = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .removerProdutoDocarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .removerProdutoDoCarrinhoDeCompras("Sauce Labs Backpack")
                 .retornarTextoDoBotaoAdicionarRemoverDoCarrinho();
 
         assertEquals("ADD TO CART",textoDoBotao);

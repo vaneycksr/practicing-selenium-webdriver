@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 public class SpecificProductTest {
 
     private WebDriver driver;
-    private static final String BACKPACK_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button";
 
     @Before
     public void setUp(){
@@ -62,7 +61,7 @@ public class SpecificProductTest {
 
         String quantidadeNoCarrinho = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .adicionarProdutoNoCarrinhoDeCompras("Sauce Labs Backpack")
                 .clicarProdutoEspecifico("Sauce Labs Fleece Jacket")
                 .clicarNoCarrinhoDeCompras()
                 .quantidadeDeProdutosNoCarrinho();

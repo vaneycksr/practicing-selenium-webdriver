@@ -13,8 +13,6 @@ import static org.junit.Assert.*;
 public class CartTest {
 
     private WebDriver driver;
-    private static final String BACKPACK_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button";
-    private static final String BIKE_LIGHT_ADD_REMOVE = "//*[@id=\"inventory_container\"]/div/div[2]/div[3]/button";
 
     @Before
     public void setUp(){
@@ -38,7 +36,7 @@ public class CartTest {
 
         String produtoAdicionado = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Backpack")
                 .getProdutoAdicionadoNoCarrinho();
 
         assertEquals("Sauce Labs Backpack", produtoAdicionado);
@@ -49,8 +47,8 @@ public class CartTest {
 
         boolean produtoEstaVisivel = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .adicionarProdutoNoCarrinhoDeCompras(BIKE_LIGHT_ADD_REMOVE)
-                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras(BACKPACK_ADD_REMOVE)
+                .adicionarProdutoNoCarrinhoDeCompras("Sauce Labs Bike Light")
+                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Backpack")
                 .removerProduto("Sauce Labs Backpack")
                 .botaoDoProdutoEstaVisivel("Sauce Labs Bike Light");
 
