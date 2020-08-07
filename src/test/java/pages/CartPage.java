@@ -38,11 +38,11 @@ public class CartPage extends BasePage{
         return driver.findElement(By.xpath("//div[contains(text(),'"+productName+"')]")).isDisplayed();
     }
 
-    public CheckoutPage clicarBotaoCheckout(){
+    public CheckoutStepOnePage clicarBotaoCheckout(){
 
         driver.findElement(By.linkText("CHECKOUT")).click();
 
-        return new CheckoutPage(driver);
+        return new CheckoutStepOnePage(driver);
     }
 
 
