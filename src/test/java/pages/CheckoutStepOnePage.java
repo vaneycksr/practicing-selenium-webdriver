@@ -4,12 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckoutStepOnePage extends BasePage{
+
     public CheckoutStepOnePage(WebDriver driver) {
         super(driver);
-    }
-
-    public String retornaTituloDaPaginaCheckout(){
-        return driver.findElement(By.xpath("//div[@class='subheader']")).getText();
     }
 
     public CartPage clicarNoBotaoCancelar(){
@@ -40,11 +37,21 @@ public class CheckoutStepOnePage extends BasePage{
         return this;
     }
 
-    public CheckoutStepOnePage digitarZipCode(String zipCode){
+    public CheckoutStepOnePage digitarPostalCode(String postalCode){
 
-        driver.findElement(By.id("postal-code")).sendKeys(zipCode);
+        driver.findElement(By.id("postal-code")).sendKeys(postalCode);
 
         return this;
+    }
+
+    public CheckoutStepTwoPage preencherCamposCorretamente(String firstName, String lastName, String postalCode){
+
+        digitarFirstName(firstName);
+        digitarLastName(lastName);
+        digitarPostalCode(postalCode);
+        clicarBotaoContinuar();
+
+        return new CheckoutStepTwoPage(driver);
     }
 
 }

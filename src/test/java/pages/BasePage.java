@@ -26,4 +26,8 @@ public class BasePage {
         return driver.findElement(By.xpath("//h3")).getText();
     }
 
+    public String retornaTituloDaPagina(){
+        return driver.findElement(By.xpath("//div[@class='subheader']")).getText();
+    }
+
 }

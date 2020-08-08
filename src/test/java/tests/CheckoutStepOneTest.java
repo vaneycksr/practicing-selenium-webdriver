@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -26,7 +27,7 @@ public class CheckoutStepOneTest {
                 .clicarNoCarrinhoDeCompras()
                 .clicarBotaoCheckout()
                 .clicarNoBotaoCancelar()
-                .retornaTituloDaPaginaDoCarrinhoDeCompras();
+                .retornaTituloDaPagina();
 
         assertEquals("Your Cart",tituloDaPagina);
 
@@ -78,7 +79,7 @@ public class CheckoutStepOneTest {
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Fleece Jacket")
                 .clicarBotaoCheckout()
                 .digitarFirstName("Van Eyck")
-                .digitarZipCode("58225000")
+                .digitarPostalCode("58225000")
                 .clicarBotaoContinuar()
                 .retornaMsgDeErroStepOne();
 
@@ -108,7 +109,7 @@ public class CheckoutStepOneTest {
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
                 .clicarBotaoCheckout()
                 .digitarLastName("Rosas")
-                .digitarZipCode("58225000")
+                .digitarPostalCode("58225000")
                 .clicarBotaoContinuar()
                 .retornaMsgDeErroStepOne();
 
@@ -122,11 +123,25 @@ public class CheckoutStepOneTest {
                 .realizarLogin("standard_user","secret_sauce")
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
                 .clicarBotaoCheckout()
-                .digitarZipCode("58225000")
+                .digitarPostalCode("58225000")
                 .clicarBotaoContinuar()
                 .retornaMsgDeErroStepOne();
 
         assertEquals("Error: First Name is required",msgErro);
+    }
+
+    @Test
+    public void testValidarPreencherCamposCorretamente(){
+
+        String tituloDaPagina = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
+                .clicarBotaoCheckout()
+                .preencherCamposCorretamente("Van Eyck","Rosas","58225000")
+                .retornaTituloDaPagina();
+
+        assertEquals("Checkout: Overview", tituloDaPagina);
+
     }
 
     @After

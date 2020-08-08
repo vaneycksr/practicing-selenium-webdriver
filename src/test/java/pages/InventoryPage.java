@@ -45,9 +45,9 @@ public class InventoryPage extends BasePage{
         return driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).getText();
     }
 
-    public InventoryPage adicionarProdutoNoCarrinhoDeCompras(String xpathDoProduto){
+    public InventoryPage adicionarProdutoNoCarrinhoDeCompras(String productName){
 
-        driver.findElement(By.xpath("//div[contains(text(),'"+xpathDoProduto+"')]/../../../div[3]/button")).click();
+        driver.findElement(By.xpath("//div[contains(text(),'"+productName+"')]/../../../div[3]/button")).click();
 
         return this;
     }

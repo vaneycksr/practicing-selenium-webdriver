@@ -62,7 +62,8 @@ public class CartTest {
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarNoCarrinhoDeCompras()
                 .clicarBotaoCheckout()
-                .retornaTituloDaPaginaCheckout();
+                .retornaTituloDaPagina();
+
 
         assertEquals("Checkout: Your Information",tituloPaginaCheckout);
 

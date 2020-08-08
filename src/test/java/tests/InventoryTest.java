@@ -21,14 +21,12 @@ public class InventoryTest {
     @Test
     public void testClicarEmUmProdutoEspecifico(){
 
-        String produto = "Sauce Labs Fleece Jacket";
-
         String tituloDoDetalheDoProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .clicarProdutoEspecifico(produto)
+                .clicarProdutoEspecifico("Sauce Labs Fleece Jacket")
                 .tituloDoProdutoClicado();
 
-        assertEquals(produto,tituloDoDetalheDoProduto);
+        assertEquals("Sauce Labs Fleece Jacket",tituloDoDetalheDoProduto);
     }
 
     @Test
@@ -116,7 +114,7 @@ public class InventoryTest {
         String tituloDaPaginaDoCarrinhoDeCompras = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarNoCarrinhoDeCompras()
-                .retornaTituloDaPaginaDoCarrinhoDeCompras();
+                .retornaTituloDaPagina();
 
         assertEquals("Your Cart",tituloDaPaginaDoCarrinhoDeCompras);
     }

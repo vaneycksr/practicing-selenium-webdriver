@@ -8,10 +8,6 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public String retornaTituloDaPaginaDoCarrinhoDeCompras(){
-        return driver.findElement(By.xpath("//div[@class='subheader']")).getText();
-    }
-
     public InventoryPage clicarNoBotaoContinuarComprando(){
 
         driver.findElement(By.linkText("CONTINUE SHOPPING")).click();
