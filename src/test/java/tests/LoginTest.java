@@ -8,7 +8,10 @@ import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class LoginTest {
 
@@ -39,8 +42,7 @@ public class LoginTest {
                 .realizarLogin("problem_user","secret_sauce")
                 .imagemComErro();
 
-        assertEquals(false,imageProblemUser);
-
+        assertFalse(imageProblemUser);
     }
 
     @Test
@@ -105,8 +107,16 @@ public class LoginTest {
     }
 
     // TODO: 18/07/2020 falta implementar esse teste de desempenho
-    @Ignore
-    public void testRealizarLoginComProblemaDePerformance(){
+    @Test
+    public void testRealizarLoginComProblemaDePerformance() throws InterruptedException {
+
+        String tituloDaPaginaDeProdutos = new LoginPage(driver)
+                .realizarLogin("performance_glitch_user","secret_sauce")
+                .tituloDaPaginaDeProdutos();
+
+        //assertEquals("Produtcs",tituloDaPaginaDeProdutos);
+        //assertEquals(2,driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS));
+        //assertEquals(driver.wait(5000));
 
     }
 

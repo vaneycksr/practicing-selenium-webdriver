@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CheckoutStepTwoTest {
 
@@ -80,9 +80,18 @@ public class CheckoutStepTwoTest {
         assertEquals("Total: $140.34", totalDaCompra);
     }
 
-    @Ignore
+    @Test
     public void testVerificarSeProdutoColocadoNoCarrinhoEstaNoStepTwo(){
 
+        boolean produtoEstarNoStepTwo = new LoginPage(driver)
+                .realizarLogin("standard_user","secret_sauce")
+                .adicionarProdutoNoCarrinhoDeCompras("Sauce Labs Onesie")
+                .clicarNoCarrinhoDeCompras()
+                .clicarBotaoCheckout()
+                .preencherCamposCorretamente("Van Eyck","Rosas","58225000")
+                .verificarSeProdutoEstarNoStepTwo("Onesie");
+
+        assertTrue(produtoEstarNoStepTwo);
     }
 
     @After
