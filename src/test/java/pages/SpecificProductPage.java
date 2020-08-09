@@ -8,7 +8,7 @@ public class SpecificProductPage extends BasePage{
         super(driver);
     }
 
-    public String tituloDoProdutoClicado(){
+    public String retornaTituloDoProdutoClicado(){
 
         return driver.findElement(By.xpath("//div[@class='inventory_details_name']")).getText();
 
@@ -35,7 +35,7 @@ public class SpecificProductPage extends BasePage{
         return this;
     }
 
-    public String getTextoDoBotaoAdicionarRemoverDoCarrinho(){
+    public String retornaTextoDoBotaoAdicionarRemoverDoCarrinho(){
 
         return driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div/button")).getText();
     }

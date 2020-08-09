@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -89,7 +88,7 @@ public class CheckoutStepTwoTest {
                 .clicarNoCarrinhoDeCompras()
                 .clicarBotaoCheckout()
                 .preencherCamposCorretamente("Van Eyck","Rosas","58225000")
-                .verificarSeProdutoEstarNoStepTwo("Onesie");
+                .retornaSeProdutoEstarNoStepTwo("Onesie");
 
         assertTrue(produtoEstarNoStepTwo);
     }

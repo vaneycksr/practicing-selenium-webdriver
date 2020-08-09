@@ -99,17 +99,17 @@ public class InventoryPage extends BasePage{
         return this;
     }
 
-    public String getUltimoProdutoPeloTitulo(){
+    public String retornaUltimoProdutoPeloTitulo(){
 
         return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[last()]")).getText();
     }
 
-    public String getPrimeiroProdutoPeloTitulo(){
+    public String retornaPrimeiroProdutoPeloTitulo(){
 
         return driver.findElement(By.xpath("(//div[@class='inventory_item_name'])[1]")).getText();
     }
 
-    public String getPrimeiroPrecoDoProduto(){
+    public String retornaPrimeiroPrecoDoProduto(){
         return driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[1]")).getText();
     }
 

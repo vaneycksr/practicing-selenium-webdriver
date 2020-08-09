@@ -9,7 +9,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public boolean botaoLoginVisivel(){
+    public boolean retornaBotaoLoginVisivel(){
         return driver.findElement(By.id("login-button")).isDisplayed();
     }
 

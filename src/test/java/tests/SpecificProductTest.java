@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -20,7 +19,7 @@ public class SpecificProductTest {
     }
 
     @Test
-    public void testValidarBotaoDeVoltar(){
+    public void testVerificarBotaoDeVoltar(){
 
         String tituloPaginaDeProdutos = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -32,7 +31,7 @@ public class SpecificProductTest {
     }
 
     @Test
-    public void testValidarAdicionarAoCarrinhoNaPaginaEspecificaDoProduto(){
+    public void testVerificarAdicionarAoCarrinhoNaPaginaEspecificaDoProduto(){
         String quantidadeNoCarrinho =  new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarProdutoEspecifico("Sauce Labs Fleece Jacket")
@@ -43,21 +42,21 @@ public class SpecificProductTest {
     }
 
     @Test
-    public void testValidarRemoverDoCarrinhoNaPaginaEspecificaDoProduto(){
+    public void testVerificarRemoverDoCarrinhoNaPaginaEspecificaDoProduto(){
 
         String textoDoBotao = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarProdutoEspecifico("Sauce Labs Fleece Jacket")
                 .clicarNoCarrinhoDeCompras()
                 .clicarEmRemoverDoCarrinhoDeCompras()
-                .getTextoDoBotaoAdicionarRemoverDoCarrinho();
+                .retornaTextoDoBotaoAdicionarRemoverDoCarrinho();
 
         assertEquals("ADD TO CART",textoDoBotao);
 
     }
 
     @Test
-    public void testValidarJaTerProdutoNoCarrinhoEAdicionarUmProdutoPelaPaginaEspecifica(){
+    public void testVerificarJaTerProdutoNoCarrinhoEAdicionarUmProdutoPelaPaginaEspecifica(){
 
         String quantidadeNoCarrinho = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")

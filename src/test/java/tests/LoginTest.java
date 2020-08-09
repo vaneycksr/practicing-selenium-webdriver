@@ -2,13 +2,10 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import support.Web;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -104,20 +101,6 @@ public class LoginTest {
                 .capturarMensagemDeErro();
 
         assertEquals(INVALID_FIELDS,invalidFieldsMsg);
-    }
-
-    // TODO: 18/07/2020 falta implementar esse teste de desempenho
-    @Test
-    public void testRealizarLoginComProblemaDePerformance() throws InterruptedException {
-
-        String tituloDaPaginaDeProdutos = new LoginPage(driver)
-                .realizarLogin("performance_glitch_user","secret_sauce")
-                .tituloDaPaginaDeProdutos();
-
-        //assertEquals("Produtcs",tituloDaPaginaDeProdutos);
-        //assertEquals(2,driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS));
-        //assertEquals(driver.wait(5000));
-
     }
 
     @After

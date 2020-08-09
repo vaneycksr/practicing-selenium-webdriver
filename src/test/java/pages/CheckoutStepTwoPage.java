@@ -28,7 +28,7 @@ public class CheckoutStepTwoPage extends BasePage {
         return driver.findElement(By.xpath("//div[@class='summary_total_label']")).getText();
     }
 
-    public boolean verificarSeProdutoEstarNoStepTwo(String productName){
+    public boolean retornaSeProdutoEstarNoStepTwo(String productName){
 
         return driver.findElement(By.xpath("//div[contains(text(),'"+productName+"')]")).isDisplayed();
     }

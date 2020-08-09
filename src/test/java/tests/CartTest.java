@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -20,7 +19,7 @@ public class CartTest {
     }
 
     @Test
-    public void testValidarBotaoDeContinuarComprando(){
+    public void testVerificarBotaoDeContinuarComprando(){
 
         String tituloDaPagina = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -32,7 +31,7 @@ public class CartTest {
     }
 
     @Test
-    public void testValidarProdutoQueFoiAdicionadoAoCarrinho(){
+    public void testVerificarProdutoQueFoiAdicionadoAoCarrinho(){
 
         String produtoAdicionado = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -56,7 +55,7 @@ public class CartTest {
     }
 
     @Test
-    public void testValidarClicarBotaoCheckout(){
+    public void testVerificarClicarBotaoCheckout(){
 
         String tituloPaginaCheckout = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")

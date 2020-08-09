@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -20,7 +19,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarClicarNoBotaoCancelar(){
+    public void testVerificarClicarNoBotaoCancelar(){
 
         String tituloDaPagina = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -34,7 +33,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarNaoPreencherOsCamposEClicarEmContinuar(){
+    public void testVerificarNaoPreencherOsCamposEClicarEmContinuar(){
 
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -46,7 +45,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPrencherApenasCampoFirstName(){
+    public void testVerificarPrencherApenasCampoFirstName(){
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
@@ -59,7 +58,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPreencherApenasFirstNameELastName(){
+    public void testVerificarPreencherApenasFirstNameELastName(){
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
@@ -73,7 +72,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPreencherApenasFirstNameEZipCode(){
+    public void testVerificarPreencherApenasFirstNameEZipCode(){
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Fleece Jacket")
@@ -87,7 +86,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPrencherApenasCampoLastName(){
+    public void testVerificarPrencherApenasCampoLastName(){
 
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -102,7 +101,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPreencherApenasLastNameEZipCode(){
+    public void testVerificarPreencherApenasLastNameEZipCode(){
 
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
@@ -118,7 +117,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPrencherApenasCampoPostalCode(){
+    public void testVerificarPrencherApenasCampoPostalCode(){
         String msgErro = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .adicionaProdutoAoCarrinhoEClicaNoCarrinhoDeCompras("Sauce Labs Bike Light")
@@ -131,7 +130,7 @@ public class CheckoutStepOneTest {
     }
 
     @Test
-    public void testValidarPreencherCamposCorretamente(){
+    public void testVerificarPreencherCamposCorretamente(){
 
         String tituloDaPagina = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")

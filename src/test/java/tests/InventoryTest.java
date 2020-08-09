@@ -24,7 +24,7 @@ public class InventoryTest {
         String tituloDoDetalheDoProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarProdutoEspecifico("Sauce Labs Fleece Jacket")
-                .tituloDoProdutoClicado();
+                .retornaTituloDoProdutoClicado();
 
         assertEquals("Sauce Labs Fleece Jacket",tituloDoDetalheDoProduto);
     }
@@ -56,61 +56,61 @@ public class InventoryTest {
         boolean botaoVisivel = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarEmLogout()
-                .botaoLoginVisivel();
+                .retornaBotaoLoginVisivel();
         assertTrue(botaoVisivel);
     }
 
     @Test
-    public void testValidarOrdenacaoDosProdutosZtoAUltimoProduto(){
+    public void testVerificarOrdenacaoDosProdutosZtoAUltimoProduto(){
         String ultimoProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarEmOrdenarProdutos("Name (Z to A)")
-                .getUltimoProdutoPeloTitulo();
+                .retornaUltimoProdutoPeloTitulo();
         assertEquals("Sauce Labs Backpack",ultimoProduto);
     }
 
     @Test
-    public void testValidarOrdenacaoDosProdutosZtoAPrimeiroProduto(){
+    public void testVerificarOrdenacaoDosProdutosZtoAPrimeiroProduto(){
         String primeiroProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarEmOrdenarProdutos("Name (Z to A)")
-                .getPrimeiroProdutoPeloTitulo();
+                .retornaPrimeiroProdutoPeloTitulo();
         assertEquals("Test.allTheThings() T-Shirt (Red)",primeiroProduto);
     }
 
     @Test
-    public void testValidarOrdenacaoPorMenorPreco(){
+    public void testVerificarOrdenacaoPorMenorPreco(){
 
         String menorPreco = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarEmOrdenarProdutos("Price (low to high)")
-                .getPrimeiroPrecoDoProduto();
+                .retornaPrimeiroPrecoDoProduto();
 
         assertEquals("$7.99",menorPreco);
     }
 
     @Test
-    public void testValidarOrdenacaoPorMaiorPreco(){
+    public void testVerificarOrdenacaoPorMaiorPreco(){
         String maiorPreco = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarEmOrdenarProdutos("Price (high to low)")
-                .getPrimeiroPrecoDoProduto();
+                .retornaPrimeiroPrecoDoProduto();
 
         assertEquals("$49.99", maiorPreco);
     }
 
     @Test
-    public void testValidarOrdenacaoPorOrdemAlfabetica(){
+    public void testVerificarOrdenacaoPorOrdemAlfabetica(){
 
         String primeiroProduto = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
-                .getPrimeiroProdutoPeloTitulo();
+                .retornaPrimeiroProdutoPeloTitulo();
 
         assertEquals("Sauce Labs Backpack",primeiroProduto);
     }
 
     @Test
-    public void testValidarClicarNoCarrinhoDeCompras(){
+    public void testVerificarClicarNoCarrinhoDeCompras(){
         String tituloDaPaginaDoCarrinhoDeCompras = new LoginPage(driver)
                 .realizarLogin("standard_user","secret_sauce")
                 .clicarNoCarrinhoDeCompras()
